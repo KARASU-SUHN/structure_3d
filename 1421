@@ -1,0 +1,63 @@
+import os
+import numpy as np
+
+# Define the path to the folder containing the .npy files
+folder_path = 'path/to/your/folder'
+
+# Get a list of all files in the folder
+files = os.listdir(folder_path)
+
+# Loop through the files and read each .npy file
+for file in files:
+    if file.endswith('.npy'):
+        file_path = os.path.join(folder_path, file)
+        data = np.load(file_path)
+        print(f'Read file {file}, data shape: {data.shape}')
+
+        # Perform any desired operations with the data here
+        # For example, you can store the data in a list or process it as needed
+
+        # Example: Store the data in a dictionary
+        # data_dict[file] = data
+
+import os
+import numpy as np
+import pandas as pd
+
+# Define the path to the folder containing the .npy files
+folder_path = 'path/to/your/folder'
+
+# Load your DataFrame from a file (e.g., CSV)
+df = pd.read_csv('path/to/your/dataframe.csv')
+
+# Get a list of all files in the folder
+files = os.listdir(folder_path)
+
+# Loop through the files and read each .npy file
+for file in files:
+    if file.endswith('.npy'):
+        file_name_without_ext = os.path.splitext(file)[0]  # Get the file name without extension
+        if file_name_without_ext in df.columns:
+            file_path = os.path.join(folder_path, file)
+            data = np.load(file_path)
+            print(f'Read file {file}, data shape: {data.shape}')
+
+            # Extract the corresponding column from the DataFrame
+            column_data = df[file_name_without_ext].values
+            print(f'Column data for {file_name_without_ext}: {column_data}')
+
+            # Perform any desired operations with the column data and the .npy data here
+            # For example, you can compare them or use them for further processing
+
+
+import pandas as pd
+
+# Load the DataFrame from a CSV file
+df = pd.read_csv('path/to/your/dataframe.csv')
+
+# Extract rows where the 'status' column is 1
+filtered_df = df[df['status'] == 1]
+
+# Display the filtered DataFrame
+print(filtered_df)
+
