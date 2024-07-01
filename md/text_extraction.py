@@ -56,4 +56,11 @@ print(f"Transcription completed and saved to '{md_file_path}'")
 
 
 
+# !pip install moviepy speechrecognition pydub
+
+
+# https://en1.savefrom.net/1KB/
+# yt-dlp
+
+
 
